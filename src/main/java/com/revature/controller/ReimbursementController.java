@@ -6,6 +6,10 @@ import java.util.List;
 
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.revature.app.Application;
 import com.revature.dto.MessageDTO;
 import com.revature.dto.PrettyReimbursement;
 import com.revature.dto.ReimbursementDTO;
@@ -20,6 +24,7 @@ import io.javalin.http.UploadedFile;
 public class ReimbursementController implements Controller {
 	
 	private ReimbursementService reimbursementService;
+	private static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public ReimbursementController() {
 		this.reimbursementService = new ReimbursementService();
@@ -56,6 +61,7 @@ public class ReimbursementController implements Controller {
 		
 		PrettyReimbursement reimbursement = reimbursementService.createReimbursement(user, reimbursementDTO);
 		
+		logger.info("Successfully created reimbursement: \n" + reimbursement);
 		ctx.json(reimbursement);
 	};
 	
@@ -65,6 +71,7 @@ public class ReimbursementController implements Controller {
 		
 		reimbursementService.approveReimbursement(user, reimbId);
 		
+		logger.info("Successfully approved reimbursement");
 		ctx.json(new MessageDTO("Reimbursement approved"));
 	};
 	
@@ -74,6 +81,7 @@ public class ReimbursementController implements Controller {
 		
 		reimbursementService.denyReimbursement(user, reimbId);
 		
+		logger.info("Successfully denied reimbursement");
 		ctx.json(new MessageDTO("Reimbursement denied"));
 	};
 	

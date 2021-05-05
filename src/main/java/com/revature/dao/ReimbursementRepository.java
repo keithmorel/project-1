@@ -138,7 +138,6 @@ public class ReimbursementRepository {
 
 		try (Session session = SessionUtility.getSessionFactory().openSession()) {
 			
-			System.out.println(user.getRole().getRole());
 			if (user.getRole().getRole().equals("Employee")) {
 				throw new AuthenticateException("Only managers can deny reimbursement requests");
 			}

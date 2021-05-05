@@ -1,5 +1,9 @@
 package com.revature.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.revature.app.Application;
 import com.revature.dto.LoginDTO;
 import com.revature.dto.MessageDTO;
 import com.revature.dto.SignupDTO;
@@ -12,6 +16,7 @@ import io.javalin.http.Handler;
 public class LoginController implements Controller {
 
 	private LoginService loginService;
+	private static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public LoginController() {
 		this.loginService = new LoginService();
@@ -22,6 +27,7 @@ public class LoginController implements Controller {
 
 		User user = loginService.getUserByUsernameAndPassword(loginDTO);
 
+		logger.info("Successfully logged in user: \n" + user);
 		ctx.sessionAttribute("currentlyLoggedInUser", user);
 		ctx.json(user);
 	};
@@ -31,27 +37,15 @@ public class LoginController implements Controller {
 		
 		User newUser = loginService.registerUser(userInfo);
 		
+		logger.info("Successfully registered user: \n" + newUser);
 		ctx.sessionAttribute("currentlyLoggedInUser", newUser);
 		ctx.json(newUser);
 		ctx.status(201);
 	};
 
-	private Handler currentUserHandler = (ctx) -> {
-		User user = (User) ctx.sessionAttribute("currentlyLoggedInUser");
-
-		if (user == null) {
-			MessageDTO messageDTO = new MessageDTO();
-			messageDTO.setMessage("User is not currently logged in!");
-			ctx.json(messageDTO);
-			ctx.status(400);
-		} else {
-			ctx.json(user);
-		}
-
-	};
-
 	private Handler logoutHandler = (ctx) -> {
 
+		logger.info("Successfully logged out current user");
 		ctx.req.getSession().invalidate();
 		ctx.json(new MessageDTO("Successfully logged out"));
 
@@ -62,7 +56,6 @@ public class LoginController implements Controller {
 
 		app.post("/signup", signupHandler);
 		app.post("/login", loginHandler);
-		app.get("currentUser", currentUserHandler);
 		app.post("/logout", logoutHandler);
 
 	}

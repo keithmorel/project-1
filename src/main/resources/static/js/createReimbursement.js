@@ -25,7 +25,7 @@ function createReimb() {
     fd.append("description", document.getElementById("descriptionInput").value);
     let file = document.getElementById("receiptInput").files[0];
     if (file) {
-        fd.append("receipt", document.getElementById("receiptInput").files[0], document.getElementById("receiptInput").files[0].name);
+        fd.append("receipt", file, file.name);
     } else {
         fd.append("receipt", "");
     }    
