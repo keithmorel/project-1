@@ -55,20 +55,26 @@ async function populateTable(status) {
             for (let val in response[i]) {
                 let td = document.createElement("td");
                 let currUser = JSON.parse(sessionStorage.getItem("currentlyLoggedInUser"));
+                // Don't add id to table row
+                if (val == 'id') continue;
+                // In order for approve/deny buttons to make sense, only add them when the user is a manager and the status is pending
                 if (val == 'resolved' && response[i]["status"] == "Pending" && currUser.role.role == "Manager") {
                     td.innerHTML = `<button id="approveReimb" class="btn btn-success" onClick="approveReimb(${response[i]['id']}, '${status}')">Approve</button>` +
                                    `<button id="denyReimb" class="btn btn-danger" onClick="denyReimb(${response[i]['id']}, '${status}')">Deny</button>`;
+                // Stops totally blank fields in table for nicer look
                 } else if (response[i][val] == null) {
                     td.innerHTML = "N/A";
+                // Convert date in milliseconds to human-readable date string
                 } else if (val == 'submitted' || val == 'resolved') {
                     const dateString = new Date(response[i][val]).toLocaleString();
                     td.innerHTML = dateString;
+                // If receipt isn't null, add button to open modal with receipt image
                 } else if (val == 'receipt') {
-                    // Replace with button to open page/modal with image
                     let btn = `<button class="btn btn-primary" onClick="populateModal('data:image/png;base64,${response[i][val]}')">Show</button>`
                     td.innerHTML = btn;
+                // Add dollar sign and commas to amount field for nicer look
                 } else if (val == 'amount') {
-                    td.innerHTML = `$${response[i][val]}`;
+                    td.innerHTML = `$${response[i][val].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
                 } else {
                     td.innerHTML = response[i][val];
                 }

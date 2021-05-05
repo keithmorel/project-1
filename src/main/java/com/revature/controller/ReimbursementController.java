@@ -30,10 +30,6 @@ public class ReimbursementController implements Controller {
 		
 		List<PrettyReimbursement> reimbursements = reimbursementService.getAllReimbursements(user);
 		
-		for (PrettyReimbursement reimb : reimbursements) {
-			System.out.println("RECEIPT***" + (reimb.getReceipt()));
-		}
-		
 		ctx.json(reimbursements);
 	};
 	
