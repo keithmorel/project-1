@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@0.1/dist/css/bootstrap-night.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar nav-fill">
+    <a class="navbar-brand">Expense Reimbursement System</a>
+    <a class="nav-link" href="landing.html">Reimbursements</a>
+    <a class="nav-link me-auto" aria-current="page" active>Signup</a>
+    <a class="nav-link me-auto" href="index.html">Login</a>
+    <a class="nav-link" href="logout.html">Logout</a>
+  </nav>
+
+  <h4>Signup Form</h4>
+  <form id="form">
+    <div class="row">
+      <label for="usernameInput" class="col-sm-1 col-form-label">Username:</label>
+      <div class="col-sm-6">
+        <input id="usernameInput" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="passwordInput" class="col-sm-1 col-form-label">Password:</label>
+      <div class="col-sm-6">
+        <input id="passwordInput" class="form-control" type="password">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="firstNameInput" class="col-sm-1 col-form-label">First Name:</label>
+      <div class="col-sm-6">
+        <input id="firstNameInput" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="lastNameInput" class="col-sm-1 col-form-label">Last Name:</label>
+      <div class="col-sm-6">
+        <input id="lastNameInput" class="form-control" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="emailInput" class="col-sm-1 col-form-label">Email:</label>
+      <div class="col-sm-6">
+        <input id="emailInput" class="form-control" type="email">
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="roleInput" class="col-sm-1 col-form-label">Role:</label>
+      <div class="col-sm-6">
+        <select id="roleInput" class="form-select">
+          <option id="lodgingSelected" selected>Employee</option>
+          <option id="travelSelected">Manager</option>
+      </select>
+      </div>
+    </div>
+
+    <button id="signupButton" class="btn btn-primary">Signup</button>
+  </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="js/signup.js"></script>
+</body>
+</html>

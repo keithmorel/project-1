@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@0.1/dist/css/bootstrap-night.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar nav-fill">
+    <a class="navbar-brand">Expense Reimbursement System</a>
+    <a class="nav-link" href="landing.html">Reimbursements</a>
+    <a class="nav-link me-auto" href="signup.html">Signup</a>
+    <a class="nav-link me-auto" href="index.html">Login</a>
+    <a class="nav-link" href="logout.html">Logout</a>
+  </nav>
+
+  <h4>Create Reimbursement Request</h4>
+  <form id="form">
+    <div class="row">
+      <label for="amountInput" class="col-sm-2 col-form-label">Amount Requested:</label>
+      <div class="col-sm-6">
+        <input id="amountInput" class="form-control" type="number">
+      </div>
+    </div>
+    
+    <div class="row">
+      <label for="typeInput" class="col-sm-2 col-form-label">Type:</label>
+      <div class="col-sm-6">
+        <select id="typeInput" class="form-select">
+          <option id="lodgingSelected" selected>Lodging</option>
+          <option id="travelSelected">Travel</option>
+          <option id="foodSelected">Food</option>
+          <option id="otherSelected">Other</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="descriptionInput" class="col-sm-2 col-form-label">Description:</label>
+      <div class="col-sm-6">
+        <textarea id="descriptionInput" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="receiptInput" class="col-sm-2 col-form-label">Upload receipt:</label>
+      <div class="col-sm-6">
+        <input id="receiptInput" type="file" class="form-control">
+      </div>
+    </div>
+
+    <button id="submitReimb" class="btn btn-primary">Create Request</button>
+</form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="js/createReimbursement.js"></script>
+</body>
+</html>
