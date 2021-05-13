@@ -31,9 +31,6 @@ function createReimb() {
     }    
     fd.append("type", document.getElementById("typeInput").value);
 
-    for (let item of fd.entries()) {
-        console.log("form data ", item);
-    }
     fetch(URL, {
         method: 'POST',
         credentials: 'include',
@@ -41,7 +38,6 @@ function createReimb() {
     }).then((data) => {
         return data.json();
     }).then((response) => {
-        console.log(response);
         if (response.message) {
             alert(response.message);
         } else {

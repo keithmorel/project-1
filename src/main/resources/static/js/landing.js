@@ -46,7 +46,6 @@ async function getTableData() {
 
 async function populateTable(status) {
     let response = await getTableData();
-    console.log(response);
     let tbody = document.querySelector("table tbody");
     tbody.innerHTML = "";
     for (let i = 0; i < response.length; i++) {

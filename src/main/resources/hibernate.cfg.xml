@@ -14,15 +14,8 @@
 		<!-- Show generated SQL queries -->
 		<property name="show_sql">false</property>
 		
-		<!-- Used to create, update, or validate database schema -->
-		<!-- Possible options:
-		1. create - creates new database tables based on existing class mappings. If the tables already exist,
-		it will drop the existing tables and recreate them
-		2. update - update the existing tables to match the class mappings
-		3. validate - validate existing tables against class mappings. If validation fails, application will not work
-		properly
-		4. create-drop - same as create, but will drop all tables once SessionFactory is closed -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- Change validate to create on first time running server -->
+		<property name="hibernate.hbm2ddl.auto">validate</property>
 		
 		<!-- Specify our entity/class mappings here -->
 		<mapping class="com.revature.model.Reimbursement"></mapping>

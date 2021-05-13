@@ -27,7 +27,6 @@ function signupUser() {
             alert(response.message);
         } else {
             sessionStorage.setItem("currentlyLoggedInUser", JSON.stringify(response));
-            console.log("Successfully logged in ", JSON.parse(sessionStorage.getItem("currentlyLoggedInUser")));
             // redirect to landing page
             window.location.href = "landing.html";
         }

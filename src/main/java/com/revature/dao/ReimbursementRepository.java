@@ -69,8 +69,19 @@ public class ReimbursementRepository {
 			Date now = new Date(System.currentTimeMillis());
 			// Create all objects needed to create a new reimbursement
 			ReimbursementStatus pending = session.get(ReimbursementStatus.class, 1);
-			ReimbursementType type = (ReimbursementType) session.createQuery("FROM ReimbursementType WHERE type=:type")
-					.setParameter("type", reimbursementDTO.getType()).getSingleResult();
+			ReimbursementType type;
+			String typeString = reimbursementDTO.getType();
+			if (typeString.equals("Lodging")) {
+				type = session.get(ReimbursementType.class, 1);
+			} else if (typeString.equals("Travel")) {
+				type = session.get(ReimbursementType.class, 2);
+			} else if (typeString.equals("Food")) {
+				type = session.get(ReimbursementType.class, 3);
+			} else if (typeString.equals("Other")) {
+				type = session.get(ReimbursementType.class, 4);
+			} else {
+				throw new DatabaseException("Cannot create a reimbursement with the type given");
+			}
 			Reimbursement newReimbursement = new Reimbursement(reimbursementDTO.getAmount(), now, null,
 					reimbursementDTO.getDescription(), reimbursementDTO.getReceipt(), user, null, pending, type);
 

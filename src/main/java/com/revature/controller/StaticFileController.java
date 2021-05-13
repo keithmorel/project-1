@@ -21,7 +21,6 @@ public class StaticFileController implements Controller {
 	public void mapEndpoints(Javalin app) {
 		
 		app.get("/",  createFileHandler("/static/index.html"));
-//		app.get("/test", createFileHandler("/static/test.html"));
 
 	}
 

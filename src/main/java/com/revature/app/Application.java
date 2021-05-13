@@ -30,7 +30,8 @@ public class Application {
 			logger.info(httpMethod + " request to endpoint " + URI + " received");
 		});
 		
-		SetupDatabaseUtility.setupDB();
+		// Uncomment below line and change the property in hibernate.cfg.xml to create to initialize database with dummy data
+//		SetupDatabaseUtility.setupDB();
 		
 		mapControllers(new ExceptionController(), new LoginController(), new ReimbursementController(), new StaticFileController());
 		

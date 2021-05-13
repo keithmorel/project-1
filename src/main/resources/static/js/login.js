@@ -24,16 +24,13 @@ function loginUser() {
         credentials: 'include',
         body: JSON.stringify(loginData)
     }).then((data) => {
-        console.log(data);
         if (data.status == 400) {
             alert("That username/password is incorrect");
         } else {
             return data.json();
         }
     }).then((response) => {
-        console.log(response);
         sessionStorage.setItem("currentlyLoggedInUser", JSON.stringify(response));
-        console.log("Successfully logged in ", JSON.parse(sessionStorage.getItem("currentlyLoggedInUser")));
         // redirect to landing page
         window.location.href = "landing.html";
     }).catch((error) => {
